@@ -25,5 +25,13 @@ export class LoginReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
+  get email() {
+    return this.form.controls["email"];
+  }
+
+  get password() {
+    return this.form.controls["password"];
+  }
+
   ngOnInit() {}
 }
