@@ -9,10 +9,10 @@ import { createPasswordStrengthValidator } from "../validators/password-strength
 })
 export class LoginReactiveComponent implements OnInit {
   form = this.fb.group({
-    email: [
-      "",
-      { validators: [Validators.required, Validators.email], updateOn: "blur" },
-    ],
+    email: this.fb.nonNullable.control("", {
+      validators: [Validators.required, Validators.email],
+      updateOn: "blur",
+    }),
     password: [
       "",
       [
@@ -34,4 +34,12 @@ export class LoginReactiveComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  login() {}
+
+  reset() {
+    this.form.reset();
+
+    console.log(this.form.value);
+  }
 }
