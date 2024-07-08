@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
+import { CreatePromoRangeValidator } from "../../validators/date-range.validators";
 
 @Component({
   selector: "create-course-step-2",
@@ -7,13 +8,21 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["create-course-step-2.component.scss"],
 })
 export class CreateCourseStep2Component implements OnInit {
-  protected form = this.fb.group({
-    courseType: ["premium", Validators.required],
-    price: [
-      null,
-      [Validators.required, Validators.min(1), Validators.max(9999)],
-    ],
-  });
+  protected form = this.fb.group(
+    {
+      courseType: ["premium", Validators.required],
+      price: [
+        null,
+        [Validators.required, Validators.min(1), Validators.max(9999)],
+      ],
+      promoStartAt: [null],
+      promoEndAt: [null],
+    },
+    {
+      validators: [CreatePromoRangeValidator()],
+      updateOn: "blur",
+    }
+  );
 
   constructor(private fb: FormBuilder) {}
 
