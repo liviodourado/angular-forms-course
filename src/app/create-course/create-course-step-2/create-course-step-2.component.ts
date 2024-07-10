@@ -15,12 +15,12 @@ export class CreateCourseStep2Component implements OnInit {
         null,
         [Validators.required, Validators.min(1), Validators.max(9999)],
       ],
+      thumbnail: [null],
       promoStartAt: [null],
       promoEndAt: [null],
     },
     {
       validators: [CreatePromoRangeValidator()],
-      updateOn: "blur",
     }
   );
 
