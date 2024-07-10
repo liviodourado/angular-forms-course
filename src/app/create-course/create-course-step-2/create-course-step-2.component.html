@@ -32,6 +32,8 @@
 </div>
 <div class="form-val">
   {{ form.value | json }}
-  {{ form.valid | json }}
+</div>
+<div class="form-val">Form validity state: {{ form.valid | json }}</div>
+<div class="form-val">
   {{ form.errors | json }}
 </div>
